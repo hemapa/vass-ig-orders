@@ -1,0 +1,5 @@
+kafka:
+  order:
+    server: http://orders
+    concurrency: 5
+  poll-timeout: 3000
