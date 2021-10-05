@@ -10,5 +10,5 @@ import java.util.Optional;
 @Mapper(componentModel = "spring",injectionStrategy = InjectionStrategy.CONSTRUCTOR)
 public interface OrderMapper {
 
-    Optional<Order> fromRequest(OrderRequest request);
+    Order fromRequest(OrderRequest request);
 }

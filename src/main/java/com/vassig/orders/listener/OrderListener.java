@@ -4,6 +4,7 @@ import com.vassig.orders.dto.OrderRequest;
 import com.vassig.orders.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +15,7 @@ public class OrderListener {
 
     private final OrderService orderService;
 
-    @KafkaListener(topics = "create-order",containerFactory = "")
+    @KafkaListener(topics = "${kafka.order.topic}",containerFactory = "orderListenerContainerFactory")
     public void createOrder(OrderRequest orderRequest) {
         log.debug("Order to create {}",orderRequest.toString());
         orderService.createOrder(orderRequest);

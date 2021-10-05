@@ -1,5 +1,7 @@
 kafka:
   order:
-    server: http://orders
+    server: http://localhost:9092
     concurrency: 5
+    group-id: create-order
+    topic: create-order
   poll-timeout: 3000

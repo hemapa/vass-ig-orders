@@ -6,6 +6,8 @@ import com.vassig.orders.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class OrderService {
@@ -14,7 +16,7 @@ public class OrderService {
     private final OrderMapper orderMapper;
 
     public void createOrder(OrderRequest orderRequest){
-        orderMapper.fromRequest(orderRequest)
+        Optional.of(orderMapper.fromRequest(orderRequest))
                 .map(orderRepository::save)
                 .orElseThrow(RuntimeException::new);
     }
